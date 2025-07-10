@@ -2,7 +2,6 @@ import streamlit as st
 import yfinance as yf
 import pandas as pd
 import plotly.graph_objects as go
-from datetime import datetime, timedelta
 import plotly.express as px
 
 # 페이지 설정
@@ -123,7 +122,7 @@ def main():
                 mode='lines',
                 name=company,
                 line=dict(color=colors[i], width=2),
-                hovertemplate=f'<b>{company}</b><br>Date: %{x}<br>Price: $%{{y:.2f}}<extra></extra>'
+                hovertemplate=f'<b>{company}</b><br>Date: %{{x}}<br>Price: $%{{y:.2f}}<extra></extra>'
             ))
         fig.update_layout(
             title=f"주가 추이 - {selected_period}",
@@ -174,7 +173,7 @@ def main():
             mode='lines',
             name=company,
             line=dict(color=colors[i % len(colors)], width=2),
-            hovertemplate=f'<b>{company}</b><br>Date: %{x}<br>Volume: %{y:,.0f}<extra></extra>'
+            hovertemplate=f'<b>{company}</b><br>Date: %{{x}}<br>Volume: %{{y:,.0f}}<extra></extra>'
         ))
     fig_volume.update_layout(
         title=f"거래량 추이 - {selected_period}",
@@ -187,7 +186,7 @@ def main():
     st.header("📉 최근 미국 주식시장 급락 사례")
     st.markdown("""
     다음은 최근 5년간 미국 주식시장의 대표적인 급락 사례입니다:
-    
+
     | 시기 | 원인 |
     |------|------|
     | **2020.03** | 코로나 팬데믹 → 공급망 붕괴, 소비 위축 |
@@ -201,7 +200,7 @@ def main():
     st.header("ℹ️ 참고 및 주의사항")
     st.info("""
     **데이터 출처**: Yahoo Finance
-    
+
     **주의**: 본 데이터는 정보 제공용이며, 투자 조언이 아닙니다. 실제 투자 결정은 전문가와 상담하세요.
     """)
 
